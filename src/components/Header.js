@@ -1,12 +1,20 @@
 import { AppBar, Toolbar, Typography } from "@mui/material";
 import React from "react";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 const Header = () => {
+  const headerStyle = {
+    color: "white",
+    textDecoration: "none",
+  };
   return (
     <AppBar position="static">
       <Toolbar>
-        <Typography>Home</Typography>
+        <Typography>
+          <NavLink style={headerStyle} to="/">
+            Home
+          </NavLink>
+        </Typography>
       </Toolbar>
     </AppBar>
   );

@@ -9,32 +9,46 @@ import {
   Typography,
 } from "@mui/material";
 import React from "react";
+import { Link } from "react-router-dom";
+import blogImage from "../images/blog-image.jpg";
 
-const Post = (props) => {
-  const { title, body } = props.post;
+const Post = ({ post }) => {
+  //get post
+  const { title, body } = post;
+  //StyleButton
+  const detailsButtonStyle = {
+    textDecoration: "none",
+  };
   return (
-    <Grid item sm={6}>
-      <Card sx={{ maxWidth: 345 }}>
+    <Grid item sm={4}>
+      <Card>
         <CardActionArea>
           <CardMedia
             component="img"
-            height="140"
-            image="/static/images/cards/contemplative-reptile.jpg"
+            height="150"
+            image={blogImage}
             alt="green iguana"
           />
           <CardContent>
-            <Typography gutterBottom variant="h5" component="div">
-              {title.slice(0, 20) + " ....."}
+            <Typography
+              style={{ textTransform: "capitalize" }}
+              gutterBottom
+              variant="h5"
+              component="div"
+            >
+              {title.slice(0, 15) + " ....."}
             </Typography>
             <Typography variant="body2" color="text.secondary">
-              {body.slice(0, 50) + " ....."}
+              {body.slice(0, 45) + " ....."}
             </Typography>
           </CardContent>
         </CardActionArea>
         <CardActions>
-          <Button size="small" color="primary">
-            Details
-          </Button>
+          <Link style={detailsButtonStyle} to={`/postDetail/${post.id}`}>
+            <Button size="small" color="primary">
+              Details
+            </Button>
+          </Link>
         </CardActions>
       </Card>
     </Grid>

@@ -9,16 +9,15 @@ const Home = () => {
   useEffect(() => {
     fetch("https://jsonplaceholder.typicode.com/posts")
       .then((res) => res.json())
-      .then((data) => setPosts(data));
-  });
+      .then((data) => setPosts(data.slice(0, 20)));
+  }, []);
   return (
     <>
       <Header></Header>
-
       {/* Post */}
-      <Grid container spacing={2}>
+      <Grid container spacing={3} sx={{ mt: 1 }}>
         {posts.map((post) => (
-          <Post post={post}></Post>
+          <Post post={post} key={post.id}></Post>
         ))}
       </Grid>
     </>
